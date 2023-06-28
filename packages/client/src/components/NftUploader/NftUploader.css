@@ -1,37 +1,56 @@
 .outerBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: none;
-    padding: 36px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 8px gray;
-    color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 36px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px gray;
+  color: gray;
+}
+
+.outerBox h2 {
+  font-weight: 600;
+}
+
+.nftUplodeBox {
+  border: 2px dashed #2d6395;
+  padding: 35px 60px;
+  position: relative;
+}
+
+.imageLogoAndText p {
+  margin-bottom: 0px;
+}
+
+.nftUploadInput {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.mintingBox {
+  padding: 35px 60px;
+  position: relative;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
-  
-  .outerBox h2 {
-    font-weight: 600;
-    margin-top: 5px;
-  }
-  
-  .nftUplodeBox {
-    border: 2px dashed #2d6395;
-    padding: 35px 60px;
-    position: relative;
-  }
-  
-  .imageLogoAndText p {
-    margin-bottom: 0px;
-  }
-  
-  .nftUploadInput {
+
+  50% {
     opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
   }
+
+  100% {
+    opacity: 1;
+  }
+}
