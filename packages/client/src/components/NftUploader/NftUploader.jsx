@@ -39,6 +39,7 @@ const NftUploader = () => {
       const account = accounts[0];
       console.log("Found an authorized account:", account);
       setCurrentAccount(account);
+      await checkNetwork();
 
       getSupplyFromContract();
     } else {
@@ -64,12 +65,28 @@ const NftUploader = () => {
        * ウォレットアドレスを currentAccount に紐付けます。
        */
       setCurrentAccount(accounts[0]);
+      await checkNetwork();
 
       getSupplyFromContract();
     } catch (error) {
       console.log(error);
     }
   };
+
+  const checkNetwork = async () => {
+    const { ethereum } = window;
+
+    let chainId = await ethereum.request({ method: "eth_chainId" });
+    console.log("Connected to chain " + chainId);
+
+    if (chainId !== "0x13881") {
+      alert("You are not connected to the Mumbai Test Network! Please switch in Metamask.");
+      await ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x13881" }],
+      });
+    }
+  }
 
   const askContractToMintNft = async (ipfs) => {
     try {
